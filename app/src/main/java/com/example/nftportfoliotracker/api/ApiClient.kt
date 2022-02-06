@@ -2,14 +2,11 @@ package com.example.nftportfoliotracker.api
 
 import android.content.Context
 import com.example.nftportfoliotracker.BuildConfig
-import com.example.nftportfoliotracker.remote.LiveDataCallAdapterFactory
 import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-const val HEADER_CACHE_CONTROL = "Cache-Control"
-const val HEADER_PRAGMA = "Pragma"
 
 class ApiClient(val context: Context) {
 
@@ -55,7 +52,6 @@ class ApiClient(val context: Context) {
             .baseUrl(BuildConfig.BASE_URL)
             .client(getOkHttpClient())
             .addConverterFactory(GsonConverterFactory.create())
-            .addCallAdapterFactory(LiveDataCallAdapterFactory())
             .build()
             .create(ApiInterface::class.java)
     }
